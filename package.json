@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "parse": "node index.js",
+        "prettier": "prettier --write . --ignore-unknown"
+    },
+    "type": "module",
+    "devDependencies": {
+        "prettier": "2.8.4"
+    },
+    "dependencies": {
+        "chalk": "^5.2.0"
+    }
+}
