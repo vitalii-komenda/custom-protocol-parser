@@ -8,6 +8,7 @@
         "prettier": "2.8.4"
     },
     "dependencies": {
+        "big.js": "^6.2.1",
         "chalk": "^5.2.0"
     }
 }
