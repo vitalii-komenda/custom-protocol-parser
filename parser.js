@@ -5,8 +5,10 @@ export const RECORD_TYPE = {
     Debit: 0,
     Credit: 1,
     StartAutopay: 2,
-    EndAutopay: 3
-}
+    EndAutopay: 3,
+};
+
+const NODE_ENV = process.env.NODE_ENV;
 
 export default class ParserMPS7 {
     constructor(path) {
@@ -86,19 +88,21 @@ export default class ParserMPS7 {
                 continue;
             }
 
-            // console.log(
-            //     `offset : ${nextRecordPosition - 1} = ${
-            //         nextRecordPosition - prevRecordPosition
-            //     }`
-            // );
-            // console.log(`type: ${type}`);
-            // console.log(`timestamp: ${date}`);
-            // console.log(`user ID : ${userId}`);
-            // console.log(`amountInUSD : ${amountUSD}`);
+            if (NODE_ENV === "development") {
+                console.log(
+                    `offset : ${nextRecordPosition - 1} = ${
+                        nextRecordPosition - prevRecordPosition
+                    }`
+                );
+                console.log(`type: ${type}`);
+                console.log(`timestamp: ${date}`);
+                console.log(`user ID : ${userId}`);
+                console.log(`amountInUSD : ${amountUSD}`);
+                console.log(``);
+            }
 
             includeAmount = isDebitCredit ? 8 : 0;
 
-            // console.log(``);
             prevRecordPosition = nextRecordPosition;
 
             nextRecordPosition =
